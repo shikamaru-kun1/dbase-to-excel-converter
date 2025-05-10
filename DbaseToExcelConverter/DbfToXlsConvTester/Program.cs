@@ -19,14 +19,20 @@ namespace DbfToXlsConvTester
                 string projectPath = resources.GetProjectDirectory();
                 Console.WriteLine($"caminho: {projectPath}");
 
-                // 2. Criar estrutura de pastas
+                // 2. Criar estrutura de pastas de importação
                 string targetPath = Path.Combine(projectPath, "DataRepo", "In");
-
                 resources.CreateDirectoryIfNotExists(targetPath);
 
                 // 3. Copiar arquivos
                 string sourcePath = "C:/Users/Administrator/Projectos EMJIT/Integration/DbfToExcelConverter/DbfToExcelConverter/Tests/TestFiles/Repo/DbfSamples";
-                resources.CopyFiles(sourcePath, targetPath);
+                resources.CopySpecificFiles(sourcePath, targetPath);
+
+                // 4. Criar a pasta de destino (para os fcheiros convertidos)
+                string outputPath = Path.Combine(projectPath, "DataRepo", "Out");
+                resources.CreateDirectoryIfNotExists(outputPath);
+
+                // 5. Converter DBase para Excel
+                //new DbfToExcel().ConvertDbfToExcel
 
                 //Console.WriteLine("Operação concluída com sucesso!");
             }

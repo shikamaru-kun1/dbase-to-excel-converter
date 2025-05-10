@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.IO;
 using Microsoft.VisualBasic.FileIO; // Para ler DBF
 using OfficeOpenXml; // Para criar Excel XLSX
@@ -13,7 +14,7 @@ namespace DbfToXlsConvTester
             // 1. Ler o arquivo DBF para um DataTable
             DataTable dbfData = ReadDbfFile(dbfFilePath);
 
-            // 2. Criar um arquivo Excel (XLSX) com EPPlus
+            /*// 2. Criar um arquivo Excel (XLSX) com EPPlus
             using (ExcelPackage excelPackage = new ExcelPackage())
             {
                 ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
@@ -36,7 +37,7 @@ namespace DbfToXlsConvTester
                 // 3. Salvar o arquivo Excel
                 FileInfo excelFile = new FileInfo(excelOutputPath);
                 excelPackage.SaveAs(excelFile);
-            }
+            }*/
 
         }
 
@@ -64,6 +65,7 @@ namespace DbfToXlsConvTester
                 }
             }
 
+            Console.WriteLine("ficheiros .dbf lidos com sucesso!");
             return table;
         }
     }
